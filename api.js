@@ -138,6 +138,9 @@ function logout() {
 // 게시글의 상세 프론트
 function article_detail(article_id) {
     console.log(article_id)
+    const url = `${frontend_base_url}/article_detail.html?id=${article_id}`
+    // 이동하고 싶은 url 생성
+    location.href = url
 
 }
 
