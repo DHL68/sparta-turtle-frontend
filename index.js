@@ -11,6 +11,9 @@ async function loadArticles() {
         const newArticle = document.createElement("li");
         newArticle.setAttribute("id", article._id) // setAttribute 고유의 id 값을 달아준다.
         newArticle.innerText = article.title // article._title 을 가져와서 제목을 innerText 로 설정
+        newArticle.setAttribute("onclick", "article_detail(this.id)")
+        // onclick 을 했을 때 article_detail() 함수를 실행하면서 this.id 값을 넣어준다.
+        // this.id 은 newArticle.setAttribute("id", article._id) 의 article._id 값
         article_list.appendChild(newArticle) // appendChild 를 이용해 newArticle 을 자식으로 붙인다.
     });
 

@@ -134,3 +134,22 @@ function logout() {
     localStorage.removeItem('token')
     window.location.replace(`${frontend_base_url}/`);
 }
+
+// 게시글의 상세 프론트
+function article_detail(article_id) {
+    console.log(article_id)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
