@@ -70,11 +70,17 @@ async function getName() {
         }
     }
     )
-    response_json = await response.json()
-    console.log(response_json)
 
-    const username = document.getElementById("username")
-    username.innerText = response_json.email
+
+    // status 200 을 확인하는 조건문
+    if (response.status == 200) {
+        response_json = await response.json()
+        console.log(response_json)
+        return response_json.email
+    }
+    else {
+        return null
+    }
 
 }
 

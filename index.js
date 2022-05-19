@@ -16,5 +16,28 @@ async function loadArticles() {
 
 }
 
+async function checkLogin() {
+    // name 에 user 의 email 이 담겨짐
+    const name = await getName();
+    console.log(name)
+    const username = document.getElementById("username")
+    const loginoutButton = document.getElementById("loginout")
+    // name 값이 있다면은
+    if (name) {
+        // id = "username" 의 이름을 name(email) 으로 바꿔줌
+        username.innerText = name
+        // 버튼의 이름도 로그아웃으로 바꿔줌
+        loginoutButton.innerText = "로그아웃"
+        // setAttribute 으로 클릭 시 logout 함수가 실행되라
+        loginoutButton.setAttribute("onclick", "logout()")
+    } else {
+        username.innerText = "로그인해주세요."
+        loginoutButton.innerText = "로그인"
+        loginoutButton.setAttribute("onclick", "location.href='/login.html'")
+    }
+}
+
+
+// 바로 실행
+checkLogin();
 loadArticles();
-getName();
