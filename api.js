@@ -144,7 +144,17 @@ function article_detail(article_id) {
 
 }
 
+// 게시글 상세 fetch
+async function getArticleDetail(article_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}`, {
+        method: 'GET',
 
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    return response_json.article
+}
 
 
 
