@@ -1,5 +1,5 @@
 const backend_base_url = "http://127.0.0.1:5002"
-const frontend_base_url = "http://127.0.0.1:5500"
+const frontend_base_url = "http://127.0.0.1:5501"
 
 async function handleSignin() {
 
@@ -23,7 +23,7 @@ async function handleSignin() {
     console.log(response_json)
 
     if (response.status == 200) {
-        // window.location.replace(`${frontend_base_url}/login.html`);
+        window.location.replace(`${frontend_base_url}/login.html`);
     } else {
         alert(response.status)
     }
@@ -52,6 +52,13 @@ async function handlelogin() {
     response_json = await response.json()
     console.log(response_json)
     localStorage.setItem("token", response_json.token)
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/index.html`);
+    } else {
+        alert(response.status)
+    }
+
 
 }
 
@@ -113,4 +120,11 @@ async function getArticles() {
 
     return response_json.articles
 
+}
+
+
+// 로그아웃 기능
+function logout() {
+    localStorage.removeItem('token')
+    window.location.replace(`${frontend_base_url}/`);
 }
