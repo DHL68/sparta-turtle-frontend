@@ -41,7 +41,34 @@ function updateMode() {
     body.insertBefore(input_title, title)
     body.insertBefore(input_content, content)
 
+    // update_button 을 가져오고
+    const update_button = document.getElementById("update_button")
+    // setAttribute 으로 onclick 시에 updateArticle() 함수 실행
+    update_button.setAttribute("onclick", "updateArticle()")
 
+}
+
+async function updateArticle() {
+    var input_title = document.getElementById("input_title")
+    var input_content = document.getElementById("input_content")
+    // 꼭 확인
+    console.log(input_title.value, input_content.value)
+
+    const article = await patchArticle(article_id, input_title.value, input_content.value);
+
+    input_title.remove()
+    input_content.remove()
+
+    const title = document.getElementById("title")
+    const content = document.getElementById("content")
+
+    // 가렸던 제목과 내용을 visible 사용해서 다시 보이기로
+    title.style.visibility = "visible"
+    content.style.visibility = "visible"
+
+    update_button.setAttribute("onclick", "updateMode()")
+
+    loadArticle(article_id)
 }
 
 
