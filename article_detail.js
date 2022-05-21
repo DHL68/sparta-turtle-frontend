@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 // URLSearchParams 현재 켜저 있는 url 을 불러올 수 있다.
 const article_id = urlParams.get('id');
 // urlParams 가 가지고 있는 id 값을 .get 으로 불러올 수 있다.
-console.log(article_id)
+// console.log(article_id)
 
 async function loadArticle(article_id) {
     const article = await getArticleDetail(article_id);
@@ -15,6 +15,14 @@ async function loadArticle(article_id) {
     content.innerText = article.content
     user_email.innerText = article.user_email
     time.innerText = article.time
+
+    const user = await getName()
+    if (user.id != article.user) {
+        const update_button = document.getElementById("update_button")
+        const delete_button = document.getElementById("delete_button")
+        update_button.style.visibility = "hidden"
+        delete_button.style.visibility = "hidden"
+    }
 }
 
 // ui 만 바꿔주는 것이기 때문에 async 를 넣지 않는다.
@@ -52,7 +60,7 @@ async function updateArticle() {
     var input_title = document.getElementById("input_title")
     var input_content = document.getElementById("input_content")
     // 꼭 확인
-    console.log(input_title.value, input_content.value)
+    // console.log(input_title.value, input_content.value)
 
     const article = await patchArticle(article_id, input_title.value, input_content.value);
 
