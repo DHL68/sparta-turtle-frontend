@@ -28,7 +28,7 @@ async function checkLogin() {
     // name 값이 있다면은
     if (name) {
         // id = "username" 의 이름을 name(email) 으로 바꿔줌
-        username.innerText = name
+        username.innerText = name.email
         // 버튼의 이름도 로그아웃으로 바꿔줌
         loginoutButton.innerText = "로그아웃"
         // setAttribute 으로 클릭 시 logout 함수가 실행되라
@@ -39,6 +39,7 @@ async function checkLogin() {
         loginoutButton.setAttribute("onclick", "location.href='/login.html'")
     }
 }
+
 
 
 // 바로 실행
